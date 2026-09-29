@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TrioMégia — Administration</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111f;--panel:#0d1a2a;--panel2:#102437;--line:#243c52;--text:#eefaff;--muted:#8ea7b9;--a:#20d8ff;--ok:#68e0a0;--danger:#ff8585;--yellow:#ffd43b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#12314b,var(--bg) 42%);color:var(--text);font-family:Inter,Arial,sans-serif;min-height:100vh}
+header{min-height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 5vw;background:#07111fee;backdrop-filter:blur(14px);position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:10px;font:800 15px Orbitron;text-decoration:none;color:var(--text)}.brand img{width:38px}.brand span span{color:var(--a)}header a{color:var(--muted);text-decoration:none;font-size:13px}.head-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.secure{font:700 10px Orbitron;color:var(--ok)}
+main{max-width:1200px;margin:auto;padding:50px 5vw 80px}.eyebrow{color:var(--a);font:700 11px Orbitron;letter-spacing:2px}.hero h1{font:800 clamp(35px,5vw,64px) Orbitron;margin:10px 0}.hero p{color:var(--muted);max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}.card,.panel{background:#0d1a2a;border:1px solid var(--line);border-radius:16px}.card{padding:24px}.card p{color:var(--muted);font-size:13px}.value{font:800 34px Orbitron;color:var(--a)}.panel{margin-top:16px;padding:25px}.panel h2{font:700 18px Orbitron;margin-top:0}.panel h3{font-size:14px}.notice{padding:14px;border-left:3px solid var(--a);background:#102437;color:#b9cedb;font-size:13px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:#102437;color:var(--text);padding:11px 15px;border-radius:8px;text-decoration:none;cursor:pointer;font-weight:700}.btn.primary{background:var(--a);color:#03101a;border-color:var(--a)}.btn.danger{border-color:#6a3030;color:#ffb0b0}.btn.yellow{background:var(--yellow);color:#171100;border-color:var(--yellow)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.field.full{grid-column:1/-1}label{display:block;color:var(--muted);font-size:12px;font-weight:700;margin:4px 0 7px}input,textarea,select{width:100%;padding:13px;background:#07111f;border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit}textarea{min-height:110px;resize:vertical}.hint{font-size:11px;color:var(--muted);margin-top:6px}.status{color:var(--ok);min-height:20px;font-size:13px}.danger-text{color:var(--danger)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}.sub-table{width:100%;border-collapse:collapse;min-width:700px}.sub-table th,.sub-table td{text-align:left;padding:12px;border-bottom:1px solid var(--line);font-size:12px}.sub-table th{font:700 10px Orbitron;color:var(--muted);letter-spacing:1px}.sub-table tr:last-child td{border-bottom:0}.check{width:18px;height:18px}.empty{padding:25px;text-align:center;color:var(--muted)}.subscriber-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:15px 0}.subscriber-tools input{max-width:360px}.count{font:700 12px Orbitron;color:var(--a);margin-left:auto}
+.compose{display:grid;grid-template-columns:1fr 1fr;gap:16px}.compose .wide{grid-column:1/-1}.mail-info{font-size:12px;color:var(--muted)}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:30px;background:radial-gradient(circle at 50% 0,#12314b,var(--bg) 48%)}.login-card{width:min(440px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:35px;box-shadow:0 30px 90px #0007}.login-logo{width:70px;height:70px;margin-bottom:20px}.login-card h1{font:800 34px Orbitron;margin:8px 0}.login-card p{color:var(--muted);font-size:13px}.login-card form{margin-top:24px}.login-card .btn{margin-top:14px;width:100%}.error{color:#ff8a8a!important;min-height:20px}.hidden{display:none!important}
+@media(max-width:850px){.grid,.form-grid,.compose{grid-template-columns:1fr}.field.full,.compose .wide{grid-column:auto}.count{margin-left:0}header{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div id="login" class="login-wrap"><div class="login-card">
+<img src="assets/logo.svg" alt="TrioMégia" class="login-logo"><p class="eyebrow">TRIOMÉGIA / ADMINISTRATION</p><h1>Accès privé</h1><p>Entrez le mot de passe administrateur pour continuer.</p>
+<form id="loginForm"><label for="password">Mot de passe</label><input id="password" type="password" autocomplete="current-password" required><button class="btn primary" type="submit">Se connecter →</button><p id="loginStatus" class="error" role="alert"></p></form>
+</div></div>
+
+<div id="app" class="hidden">
+<header><a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>TRIO<span>MÉGIA</span></span></a><div class="head-actions"><span class="secure">● SESSION ADMIN</span><button id="logout" class="btn">Déconnexion</button><a href="index.html">← Retour au site</a></div></header>
+<main>
+<section class="hero"><p class="eyebrow">TRIOMÉGIA / ADMINISTRATION</p><h1>Panneau d'administration</h1><p>Modifiez les informations enregistrées par le panneau, gérez les abonnés disponibles sur cet appareil et préparez des messages individuels ou groupés.</p></section>
+
+<div class="grid"><article class="card"><p>PROJET</p><div class="value" id="statYear">2022</div><p>Date de lancement du projet.</p></article><article class="card"><p>ÉQUIPE</p><div class="value" id="statTeam">03</div><p id="statTeamNames">Aedan · Antoine · Nahël</p></article><article class="card"><p>DÉVELOPPEMENT</p><div class="value" id="statHorizon">10–20+</div><p>Horizon de développement prévu.</p></article></div>
+
+<section class="panel"><h2>Informations du projet</h2><div class="form-grid">
+<div class="field"><label for="year">Année de lancement</label><input id="year" type="text"></div>
+<div class="field"><label for="teamCount">Nombre de membres</label><input id="teamCount" type="text"></div>
+<div class="field"><label for="teamNames">Noms de l'équipe</label><input id="teamNames" type="text"></div>
+<div class="field"><label for="horizon">Horizon de développement</label><input id="horizon" type="text"></div>
+<div class="field full"><label for="projectStatus">État du projet</label><textarea id="projectStatus"></textarea></div>
+<div class="field full"><label for="tagline">Slogan</label><input id="tagline" type="text"></div>
+</div><div class="actions"><button class="btn primary" id="saveInfo">Enregistrer les informations</button><button class="btn" id="resetInfo">Rétablir les valeurs initiales</button></div><p class="status" id="infoStatus"></p></section>
+
+<section class="panel"><h2>Équipe</h2><p class="mail-info">Ces membres servent aussi à personnaliser les informations administratives affichées ci-dessus.</p><div class="form-grid"><div class="field"><label for="member1">Membre 1</label><input id="member1" type="text"></div><div class="field"><label for="role1">Rôle 1</label><input id="role1" type="text"></div><div class="field"><label for="member2">Membre 2</label><input id="member2" type="text"></div><div class="field"><label for="role2">Rôle 2</label><input id="role2" type="text"></div><div class="field"><label for="member3">Membre 3</label><input id="member3" type="text"></div><div class="field"><label for="role3">Rôle 3</label><input id="role3" type="text"></div></div><div class="actions"><button class="btn primary" id="saveTeam">Enregistrer l'équipe</button></div><p class="status" id="teamStatus"></p></section>
+
+<section class="panel"><h2>Abonnés à la newsletter</h2><div class="notice">Cette page peut afficher et gérer les abonnés enregistrés dans le stockage du navigateur. Elle ne peut pas récupérer des abonnés qui n'ont jamais été enregistrés par le site, et GitHub Pages ne fournit pas de serveur d'envoi d'e-mails.</div>
+<div class="subscriber-tools"><input id="newEmail" type="email" placeholder="adresse@email.com"><button class="btn primary" id="addSubscriber">Ajouter</button><button class="btn" id="selectAll">Tout sélectionner</button><button class="btn" id="importBtn">Importer CSV</button><input id="importFile" type="file" accept=".csv,text/csv" class="hidden"><button class="btn" id="exportBtn">Exporter CSV</button><span class="count" id="subCount">0 abonné</span></div>
+<div class="table-wrap"><table class="sub-table"><thead><tr><th></th><th>E-MAIL</th><th>DATE</th><th>ACTION</th></tr></thead><tbody id="subscriberRows"></tbody></table></div>
+<div class="actions"><button class="btn yellow" id="groupMail">✉ Message groupé</button><button class="btn danger" id="deleteSelected">Supprimer la sélection</button></div><p class="status" id="subStatus"></p></section>
+
+<section class="panel"><h2>Envoyer un message</h2><p class="mail-info">Le bouton ouvre le logiciel de messagerie configuré sur l'appareil avec les destinataires. Pour un envoi réellement automatique depuis le site, il faut un service d'e-mail ou un backend.</p><div class="compose"><div class="field"><label for="recipient">Destinataire individuel</label><input id="recipient" type="email" placeholder="client@email.com"></div><div class="field"><label for="subject">Objet</label><input id="subject" type="text" placeholder="Actualités TrioMégia"></div><div class="field wide"><label for="message">Message</label><textarea id="message" placeholder="Votre message..."></textarea></div></div><div class="actions"><button class="btn primary" id="singleMail">✉ Envoyer un MP / e-mail</button><button class="btn yellow" id="selectedMail">✉ Envoyer aux sélectionnés</button></div><p class="status" id="mailStatus"></p></section>
+
+<section class="panel"><h2>Notes administrateur</h2><label for="notes">Notes locales</label><textarea id="notes" placeholder="Écrire une note interne..."></textarea><div class="actions"><button class="btn primary" id="saveNotes">Enregistrer</button><button class="btn" id="clearNotes">Effacer</button></div><p class="status" id="noteStatus"></p></section>
+<section class="panel"><h2>Sécurité</h2><div class="notice">Le mot de passe est vérifié avec une empreinte SHA-256 côté navigateur. Comme cette page est publique sur GitHub Pages, ce n'est pas une authentification serveur. Les informations et abonnés stockés avec localStorage sont également accessibles depuis le navigateur. Pour de vraies données privées et de vrais envois, utilisez un backend et une authentification serveur.</div></section>
+</main></div>
+
+<script>
+const PASSWORD_HASH="130b01e0dcb1dd5ecd9f3fff6d7285df2a54ae901af983ae9fa48177dbde0014";
+const DEFAULTS={year:"2022",teamCount:"03",teamNames:"Aedan · Antoine · Nahël",horizon:"10–20+",projectStatus:"Le développement de TrioMégia avance progressivement en fonction du temps disponible et des raisons personnelles des créateurs.",tagline:"DEMAIN C'EST MAINTENANT",team:[{name:"Aedan",role:"Programmation"},{name:"Antoine",role:"Idées & concepts"},{name:"Nahël",role:"Jeux & gaming"}]};
+const $=id=>document.getElementById(id);
+async function sha256(value){const data=new TextEncoder().encode(value);const hash=await crypto.subtle.digest("SHA-256",data);return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,"0")).join("");}
+function getInfo(){try{return {...DEFAULTS,...JSON.parse(localStorage.getItem("triomegia-site-info")||"{}")}}catch{return {...DEFAULTS}}}
+function setVal(id,v){$(id).value=v??""} function flash(id,msg){$(id).textContent=msg;setTimeout(()=>$(id).textContent="",3500)}
+function loadInfo(){const d=getInfo();setVal("year",d.year);setVal("teamCount",d.teamCount);setVal("teamNames",d.teamNames);setVal("horizon",d.horizon);setVal("projectStatus",d.projectStatus);setVal("tagline",d.tagline);(d.team||DEFAULTS.team).forEach((m,i)=>{setVal("member"+(i+1),m.name);setVal("role"+(i+1),m.role)});$("statYear").textContent=d.year;$("statTeam").textContent=d.teamCount;$("statTeamNames").textContent=d.teamNames;$("statHorizon").textContent=d.horizon}
+$("saveInfo").onclick=()=>{const d={...getInfo(),year:$('year').value,teamCount:$('teamCount').value,teamNames:$('teamNames').value,horizon:$('horizon').value,projectStatus:$('projectStatus').value,tagline:$('tagline').value};localStorage.setItem("triomegia-site-info",JSON.stringify(d));loadInfo();flash("infoStatus","✓ Informations enregistrées sur cet appareil.")};
+$("resetInfo").onclick=()=>{localStorage.setItem("triomegia-site-info",JSON.stringify(DEFAULTS));loadInfo();flash("infoStatus","Valeurs initiales rétablies.")};
+$("saveTeam").onclick=()=>{const d=getInfo();d.team=[1,2,3].map(i=>({name:$('member'+i).value,role:$('role'+i).value}));d.teamNames=d.team.map(x=>x.name).filter(Boolean).join(" · ");d.teamCount=String(d.team.filter(x=>x.name).length).padStart(2,"0");localStorage.setItem("triomegia-site-info",JSON.stringify(d));loadInfo();flash("teamStatus","✓ Équipe enregistrée.")};
+
+function getSubs(){try{const a=JSON.parse(localStorage.getItem("triomegia-newsletter-subscribers")||"[]");return Array.isArray(a)?a:[]}catch{return[]}}
+function saveSubs(a){localStorage.setItem("triomegia-newsletter-subscribers",JSON.stringify(a));renderSubs()}
+function renderSubs(){const rows=$("subscriberRows"),a=getSubs();rows.innerHTML="";a.forEach((s,i)=>{const tr=document.createElement("tr");const date=s.date?new Date(s.date).toLocaleDateString("fr-FR"):"—";tr.innerHTML=`<td><input class="check sub-check" type="checkbox" data-i="${i}"></td><td>${escapeHtml(s.email)}</td><td>${date}</td><td><button class="btn danger remove-sub" data-i="${i}">Supprimer</button></td>`;rows.appendChild(tr)});if(!a.length)rows.innerHTML='<tr><td colspan="4" class="empty">Aucun abonné enregistré pour le moment.</td></tr>';$('subCount').textContent=a.length+" abonné"+(a.length===1?"":"s");}
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+$("addSubscriber").onclick=()=>{const email=$('newEmail').value.trim().toLowerCase();if(!email||!email.includes("@")){flash("subStatus","Adresse e-mail invalide.");return}const a=getSubs();if(a.some(x=>x.email.toLowerCase()===email)){flash("subStatus","Cet e-mail est déjà enregistré.");return}a.push({email,date:new Date().toISOString()});saveSubs(a);$('newEmail').value="";flash("subStatus","✓ Abonné ajouté.")};
+$("subscriberRows").onclick=e=>{const b=e.target.closest(".remove-sub");if(!b)return;const a=getSubs();a.splice(Number(b.dataset.i),1);saveSubs(a);flash("subStatus","Abonné supprimé.")};
+function selectedIndexes(){return [...document.querySelectorAll(".sub-check:checked")].map(x=>Number(x.dataset.i))}
+$("selectAll").onclick=()=>{const boxes=[...document.querySelectorAll(".sub-check")];const all=boxes.length&&boxes.every(x=>x.checked);boxes.forEach(x=>x.checked=!all)};
+$("deleteSelected").onclick=()=>{const idx=new Set(selectedIndexes());if(!idx.size){flash("subStatus","Sélectionnez au moins un abonné.");return}saveSubs(getSubs().filter((_,i)=>!idx.has(i)));flash("subStatus","Sélection supprimée.")};
+function buildMail(to){const subject=encodeURIComponent($('subject').value||"Actualités TrioMégia");const body=encodeURIComponent($('message').value||"");location.href="mailto:"+to+"?subject="+subject+"&body="+body}
+$("singleMail").onclick=()=>{const to=$('recipient').value.trim();if(!to){flash("mailStatus","Indiquez un destinataire.");return}buildMail(encodeURIComponent(to));};
+$("selectedMail").onclick=()=>{const a=getSubs(),idx=selectedIndexes();if(!idx.length){flash("mailStatus","Sélectionnez au moins un abonné.");return}buildMail(encodeURIComponent(idx.map(i=>a[i].email).join(",")))};
+$("groupMail").onclick=()=>{const a=getSubs(),idx=selectedIndexes();const emails=(idx.length?idx:a.map((_,i)=>i)).map(i=>a[i]?.email).filter(Boolean);if(!emails.length){flash("subStatus","Aucun abonné à contacter.");return}buildMail(encodeURIComponent(emails.join(",")))};
+$("exportBtn").onclick=()=>{const csv="email,date\n"+getSubs().map(s=>`${JSON.stringify(s.email)},${JSON.stringify(s.date||"")}`).join("\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="triomegia-abonnes.csv";a.click();URL.revokeObjectURL(a.href)};
+$("importBtn").onclick=()=>$("importFile").click();$("importFile").onchange=async e=>{const file=e.target.files[0];if(!file)return;const text=await file.text();const lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);const a=getSubs();for(const line of lines){const first=line.split(",")[0].replace(/^\"|\"$/g,"").trim().toLowerCase();if(first&&first.includes("@")&&!a.some(x=>x.email===first))a.push({email:first,date:new Date().toISOString()})}saveSubs(a);e.target.value="";flash("subStatus","✓ Import terminé.")};
+
+$("saveNotes").onclick=()=>{localStorage.setItem("triomegia-admin-notes",$('notes').value);flash("noteStatus","✓ Note enregistrée sur cet appareil.")};$("clearNotes").onclick=()=>{$('notes').value="";localStorage.removeItem("triomegia-admin-notes");flash("noteStatus","Note effacée.")};
+
+const login=$("login"),app=$("app"),form=$("loginForm"),loginStatus=$("loginStatus");
+function showApp(){login.classList.add("hidden");app.classList.remove("hidden");loadInfo();renderSubs();$('notes').value=localStorage.getItem("triomegia-admin-notes")||""}
+if(sessionStorage.getItem("triomegia-admin-auth")==="1")showApp();
+form.addEventListener("submit",async e=>{e.preventDefault();const hash=await sha256($("password").value);if(hash===PASSWORD_HASH){sessionStorage.setItem("triomegia-admin-auth","1");showApp()}else loginStatus.textContent="Mot de passe incorrect."});
+$("logout").onclick=()=>{sessionStorage.removeItem("triomegia-admin-auth");location.reload()};
+</script>
+</body></html>
